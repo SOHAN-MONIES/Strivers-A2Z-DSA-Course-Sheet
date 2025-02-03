@@ -13,10 +13,10 @@ void rotate(vector<int> &arr)
     }
     arr[n - 1] = temp;
 
-    // for (auto num : arr)
-    // {
-    //     cout << num;
-    // }
+    for (auto num : arr)
+    {
+        cout << num;
+    }
 }
 
 int main()
