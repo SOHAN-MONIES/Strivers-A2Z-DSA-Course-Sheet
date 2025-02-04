@@ -2,9 +2,23 @@
 #include <bits/stdc++.h>
 #include <iostream>
 using namespace std;
+
+long long fact(int n)
+{
+    if (n == 1 || n == 0)
+        return 1;
+    return n * fact(n - 1);
+}
 vector<long long> factorialNumbers(long long n)
 {
-    // Write Your Code here
+    int i = 1;
+    vector<long long> v1;
+    while (fact(i) <= n)
+    {
+        v1.push_back(fact(i));
+        i++;
+    }
+    return v1;
 }
 
 int main()
