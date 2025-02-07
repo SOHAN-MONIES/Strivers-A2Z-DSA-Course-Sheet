@@ -6,11 +6,14 @@ using namespace std;
 int main()
 {
     vector<int> arr = {1, 2, 3, 4, 5, 1};
-    vector<int> hash(100, 0);
+    map<int, int> mpp;
     for (int i = 0; i < arr.size(); i++)
     {
-        hash[arr[i]]++;
+        mpp[arr[i]]++;
     }
-    cout << hash[6];
+    for (auto it : mpp)
+    {
+        cout << it.first << " " << it.second << endl;
+    }
     return 0;
 }
