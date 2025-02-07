@@ -1,6 +1,7 @@
 // URL: https://www.geeksforgeeks.org/problems/binary-search-1587115620/1
-#include <bits/stdc++.h>
 #include <iostream>
+#include <type_traits>
+#include <vector>
 using namespace std;
 int search(vector<int> &nums, int target)
 {
@@ -16,6 +17,7 @@ int search(vector<int> &nums, int target)
         else
             high = mid - 1;
     }
+    
     return -1;
 }
 
