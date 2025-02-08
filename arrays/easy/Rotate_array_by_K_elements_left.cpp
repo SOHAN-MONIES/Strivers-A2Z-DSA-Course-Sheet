@@ -10,12 +10,6 @@ void rotateArr(vector<int> &arr, int d)
     reverse(arr.begin(), arr.begin() + d);
     reverse(arr.begin() + d, arr.end());
     reverse(arr.begin(), arr.end());
-
-    // 1, 2, 3, 4, 5
-    // 2, 1 ,5 ,4 ,3
-    // 3 4 5 1 2
-
-    // 3, 4, 5, 1 ,2
 }
 
 int main()
