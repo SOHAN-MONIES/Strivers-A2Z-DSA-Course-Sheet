@@ -23,6 +23,6 @@ vector<long long> factorialNumbers(long long n)
 
 int main()
 {
-
+    cout << fact(32);
     return 0;
 }
