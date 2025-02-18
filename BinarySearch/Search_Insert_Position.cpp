@@ -4,16 +4,7 @@
 using namespace std;
 int searchInsert(vector<int> &nums, int target)
 {
-    int n = nums.size();
-    auto lb = lower_bound(nums.begin(), nums.end(), target);
-    if (lb != nums.end() && target == *lb)
-    {
-        return distance(nums.begin(), lb);
-    }
-    else if (lb != nums.end() && target != *lb)
-        return distance(nums.begin(), lb);
-    else
-        return n;
+    return lower_bound(nums.begin(), nums.end(), target) - nums.begin();
 }
 
 int main()
