@@ -1,28 +1,26 @@
-// URL: https://www.geeksforgeeks.org/problems/binary-search-1587115620/1
-#include <iostream>
-#include <type_traits>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
-int search(vector<int> &nums, int target)
+
+int binary_search(vector<int> a, int t)
 {
-    int n = nums.size();
-    int low = 0, high = n - 1;
-    while (low <= high)
+    int n = a.size();
+    int l = 0;
+    int h = n - 1;
+    while (l <= h)
     {
-        int mid = (low + high) / 2;
-        if (nums[mid] == target)
-            return mid;
-        else if (target > nums[mid])
-            low = mid + 1;
+        int m = (l + h) / 2;
+        if (a[m] == t)
+            return m;
+        else if (t > a[m])
+            l = m + 1;
         else
-            high = mid - 1;
+            h = m - 1;
     }
-    
     return -1;
 }
 
 int main()
 {
-
-    return 0;
+    vector<int> v1 = {1, 2, 4, 6, 90};
+    cout << binary_search(v1, 1);
 }
