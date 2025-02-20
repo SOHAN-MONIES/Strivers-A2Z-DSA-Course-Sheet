@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int binary_search(vector<int>& a, int t)
+int binary_search(vector<int> &a, int t)
 {
     int n = a.size();
     int l = 0;
