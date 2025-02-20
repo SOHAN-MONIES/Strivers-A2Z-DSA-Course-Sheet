@@ -1,4 +1,4 @@
-// URL:
+// URL:https://www.geeksforgeeks.org/problems/number-of-occurrence2259/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=number-of-occurrence
 #include <bits/stdc++.h>
 #include <iostream>
 using namespace std;
