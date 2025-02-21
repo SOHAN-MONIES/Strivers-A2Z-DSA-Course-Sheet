@@ -19,7 +19,7 @@ bool ispossible(vector<int> &bloomDay, int m, int k, int mid)
             cnt = 0;
         }
     }
-    a += cnt / k;  // you are checking valid number of bouqket using else if there is valid sequence at end , the number skips , hence add after loop [if its not valid cnt=0 so no problem]
+    a += cnt / k;  // you are checking valid number of bouquet using else if there is valid sequence at end , the number skips , hence add after loop [if its not valid cnt=0 so no problem]
     return a >= m;
 }
 

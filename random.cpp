@@ -28,12 +28,42 @@ int maxRepeating(int k, vector<int> &arr)
     return p1[0].first;
 }
 
-   
+int findClosest(vector<int> &arr, int k)
+{
+    int n = arr.size();
+    if (arr.size() == 1)
+    {
+        return arr[0];
+    }
+    int index = lower_bound(arr.begin(), arr.end(), k) - arr.begin();
+    if (index == 0)
+    {
+        return arr[0];
+    }
+    if (index == arr.size() - 1)
+    {
+        return arr[-2];
+    }
+    int d1 = abs(k - arr[index - 1]);
+    int d2 = abs(k - arr[index ]);
+    if (d1 < d2)
+    {
+        return arr[index - 1];
+    }
+    else if (d2 < d1)
+    {
+        return arr[index ];
+    }
+    else
+    {
+        return arr[index ] > arr[index - 1] ? arr[index ] : arr[index - 1];
+    }
+}
 
 int main()
 {
-    vector<int> v1 = {2, 2, 1, 2};
-    cout << maxRepeating(3, v1);
+    vector<int> v1 = {2,3,5,8,20};
+    cout << findClosest(v1, 2);
 
     return 0;
 }
