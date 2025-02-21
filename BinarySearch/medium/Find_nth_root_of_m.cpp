@@ -28,6 +28,6 @@ int nthRoot(int n, int m)
 
 int main()
 {
-    cout << nthRoot(2, 9);
+    cout << nthRoot(6, 1000000);
     return 0;
 }
