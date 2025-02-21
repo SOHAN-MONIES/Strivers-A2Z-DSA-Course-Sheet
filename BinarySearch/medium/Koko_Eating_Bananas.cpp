@@ -8,7 +8,7 @@ long long findtotalhrs(vector<int> &piles, int a)
     long long totalhours = 0;
     for (auto num : piles)
     {
-        totalhours += ceil((double)num / a);
+        totalhours += ceil((double)num / a); // make sure this is double
     }
     return totalhours;
 }
