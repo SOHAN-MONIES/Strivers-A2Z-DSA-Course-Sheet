@@ -3,25 +3,25 @@
 #include <iostream>
 using namespace std;
 
-bool ispossible(vector<int> &arr, int k, int m)
+bool ispossible(vector<int> &nums, int threshold, int m)
 {
     int sum = 0;
-    for (auto num : arr)
+    for (auto num : nums)
     {
         sum += ceil((double)num / m); //make sure this is double
     }
-    return sum <= k;
+    return sum <= threshold;
 }
 
-int smallestDivisor(vector<int> &arr, int k)
+int smallestDivisor(vector<int> &nums, int threshold)
 {
     int l = 1;
-    int h = *max_element(arr.begin(),arr.end());
+    int h = *max_element(nums.begin(),nums.end());
     int ans = -1;
     while (l <= h)
     {
         int m = l + (h - l) / 2;
-        if (ispossible(arr, k, m))
+        if (ispossible(nums, threshold, m))
         {
             ans = m;
             h = m - 1;
