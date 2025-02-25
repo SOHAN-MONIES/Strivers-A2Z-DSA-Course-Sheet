@@ -20,20 +20,23 @@ int findKthPositive(vector<int> &arr, int k){
     while (l<=h){
         int m = (l + h) / 2;
         int missing = arr[m] - (m + 1);
-        if(missing>k){
+        if(missing>=k){
             h = m - 1;
         }
         else{
             l = m + 1;
         }
     }
-    return l+1;
+    return l+k;
 }
 
     int main()
 {
-    vector<int> v1 = {2, -3, 4, 1, 1, 7};
-    cout<<findKthPositive(v1, 3);
+    vector<int> v1 = {2, 3, 4, 7, 11};
+    cout<<findKthPositive(v1, 5);
    // cout << missingNumber(v1);
     return 0;
 }
+
+//h = l - 1;
+//l+k  h+1+k
