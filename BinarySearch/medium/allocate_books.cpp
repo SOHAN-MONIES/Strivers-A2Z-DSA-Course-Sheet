@@ -33,21 +33,27 @@ int findPages(vector<int> &arr, int k)
     while (l <= h)
     {
         int m = l + (h - l) / 2;
-        if (studentPossible(arr, k, m) <= k)
+
+        if (studentPossible(arr, k, m) <=k)
         {
-            ans = m;
+
             h = m - 1;
         }
-        else
+        else 
         {
             l = m + 1;
         }
     }
-    return ans;
+    return l;
 }
 
 int main()
 {
-
+    vector<int> v1 = {7,
+                      2,
+                      5,
+                      10,
+                      8};
+    cout << findPages(v1, 2);
     return 0;
 }
