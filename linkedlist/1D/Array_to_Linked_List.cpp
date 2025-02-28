@@ -6,24 +6,17 @@ class Node
 public:
     int data;
     Node *next;
-
-    // Default constructor
-    Node()
+    Node(int val)
     {
-        data = 0;
+        data = val;
         next = NULL;
-    }
-
-    // Parameterised Constructor
-    Node(int data)
-    {
-        this->data = data;
-        this->next = NULL;
     }
 };
 
 Node *constructLL(vector<int> &arr)
 {
+    if (arr.empty())
+        return NULL;
     Node *head = new Node(arr[0]);
     Node *mover = head;
     for (int i = 1; i < arr.size(); i++)
@@ -53,35 +46,98 @@ void printLL(Node *head)
     cout << endl;
 }
 
-int printLength(Node *head)
+Node *deletehead(Node *head)
 {
-    int cnt = 0;
+    if (head == NULL)
+        return head;
     Node *temp = head;
+    head = head->next;
+    delete temp;
+    return head;
+}
+
+Node *deleteTail(Node *head)
+{
+
+    if (head == NULL || head->next == NULL)
+    {
+        return NULL;
+    }
+    Node *temp = head;
+    while (temp->next->next != NULL)
+    {
+        temp = temp->next;
+    }
+    delete temp->next;
+    temp->next = NULL;
+    return head;
+}
+
+Node *deleteNode(Node *head, int x)
+{
+    if (head == nullptr)
+        return nullptr;
+    if (x == 1)
+    {
+        Node *temp = head;
+        head = head->next;
+        delete temp;
+        return head;
+    }
+    Node *temp = head;
+    Node *prev = NULL;
+    int cnt = 0;
     while (temp != NULL)
     {
         cnt++;
+        if (cnt == x)
+        {
+            prev->next = prev->next->next;
+            delete temp;
+            break;
+        }
+        prev = temp;
         temp = temp->next;
     }
-    return cnt;
+    return head;
 }
 
-bool searchKey(Node *head, int key)
+Node *deleteNodevalue(Node *head, int x)
 {
+    if (head == nullptr)
+        return nullptr;
+    if (x == 1)
+    {
+        Node *temp = head;
+        head = head->next;
+        delete temp;
+        return head;
+    }
     Node *temp = head;
+    Node *prev = NULL;
+
     while (temp != NULL)
     {
-        if (key == temp->data)
-            return true;
+
+        if (x==temp->data)
+        {
+            prev->next = prev->next->next;
+            delete temp;
+            break;
+        }
+        prev = temp;
         temp = temp->next;
     }
-    return false;
-} 
+    return head;
+}
+
 int main()
 {
-    vector<int> v1 = {2,1, 2, 3, 4, 5,9};
-    Node* head = constructLL(v1);
+    vector<int> v1 = {1, 2, 3, 4, 5,4};
+    Node *head = constructLL(v1);
     printLL(head);
-    cout << printLength(head) << endl;
-    cout << searchKey(head, 15);
+    Node *head2 = deleteNodevalue(head, 2);
+    printLL(head2);
+
     return 0;
 }

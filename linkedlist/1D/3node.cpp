@@ -1,13 +1,13 @@
 #include <iostream>
 using namespace std;
 
-class Node
+struct Node
 {
-public:
+
     int data;
     Node *next;
 
-public:
+
     Node(int val)
     {
         data = val;
@@ -22,13 +22,20 @@ int main()
     Node *third = new Node(30);
 
     first->next = second;
-    second->next = third;
+    second->next = third; 
     third->next = NULL;
 
     Node *temp = first;
     while (temp != NULL)
     {
-        cout << temp->data << "->" << temp->next << endl;
+        if (temp->next == NULL)
+        {
+            cout << temp->data<<endl;
+        }
+        else
+        {
+            cout << temp->data << "->";
+        }
         temp = temp->next;
     }
 }
