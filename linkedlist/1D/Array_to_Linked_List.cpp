@@ -106,7 +106,7 @@ Node *deleteNodevalue(Node *head, int x)
 {
     if (head == nullptr)
         return nullptr;
-    if (x == 1)
+    if (head->data == x)
     {
         Node *temp = head;
         head = head->next;
@@ -119,7 +119,7 @@ Node *deleteNodevalue(Node *head, int x)
     while (temp != NULL)
     {
 
-        if (x==temp->data)
+        if (x == temp->data)
         {
             prev->next = prev->next->next;
             delete temp;
@@ -131,12 +131,26 @@ Node *deleteNodevalue(Node *head, int x)
     return head;
 }
 
+Node *inserthead(Node *head, int x)
+{
+    Node *temp = new Node(x);
+    temp->next = head;
+    return temp;
+}
+
+Node *inserthead(Node *head, int x)
+{
+    Node *temp = new Node(x);
+    temp->next = head;
+    return temp;
+}
+
 int main()
 {
-    vector<int> v1 = {1, 2, 3, 4, 5,4};
+    vector<int> v1 = {};
     Node *head = constructLL(v1);
     printLL(head);
-    Node *head2 = deleteNodevalue(head, 2);
+    Node *head2 = inserthead(head, 2);
     printLL(head2);
 
     return 0;
