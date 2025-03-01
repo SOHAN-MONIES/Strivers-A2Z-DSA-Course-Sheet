@@ -42,42 +42,25 @@ void printLL(Node* head) {
     cout << endl;
 }
 
-// Node *reverseList(struct Node *head)
+// Node *findFirstNode(Node *head)
 // {
+//     unordered_map<Node *, int> mpp;
 //     Node *temp = head;
-//     stack<int> st;
-//     while(temp!=NULL){
-//         st.push(temp->data);
+//     while (temp != NULL)
+//     {
+//         mpp[temp]++;
+//         if (mpp[temp] == 2)
+//         {
+//             return temp;
+//         }
 //         temp = temp->next;
 //     }
-//     temp = head;
-//     while(temp!=NULL){
-//         temp->data = st.top();
-//         st.pop();
-//         temp = temp->next;
-//     }
-//     return head;
+//     return NULL;
 // }
 
-Node *reverseList(struct Node *head){
-    Node *temp = head;
-    Node *prev = NULL; 
-    while (temp!=NULL)
-    {
-        Node* front = temp->next;
-        temp->next = prev;
-        prev = temp;
-        temp = front;
-    }
-    return prev;
-}
-
-    int main()
-{
+int main() {
     vector<int> v1 = {1, 2, 3};
     Node* head = constructLL(v1);
     printLL(head);
-    Node* head2=reverseList(head);
-    printLL(head2);
     return 0;
 }

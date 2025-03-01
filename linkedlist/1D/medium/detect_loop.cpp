@@ -41,35 +41,33 @@ void printLL(Node* head) {
     }
     cout << endl;
 }
-
-// Node *reverseList(struct Node *head)
+// TC->O(N) and SC->O(N)
+// bool detectLoop(Node *head)
 // {
+//     unordered_map<Node *, int> mpp;
 //     Node *temp = head;
-//     stack<int> st;
-//     while(temp!=NULL){
-//         st.push(temp->data);
+//     while (temp!=NULL)
+//     {
+//         if(mpp.find(temp)!=mpp.end()){
+//             return true;
+//         }
+//         mpp[temp]++;
 //         temp = temp->next;
 //     }
-//     temp = head;
-//     while(temp!=NULL){
-//         temp->data = st.top();
-//         st.pop();
-//         temp = temp->next;
-//     }
-//     return head;
+//     return false;
 // }
 
-Node *reverseList(struct Node *head){
-    Node *temp = head;
-    Node *prev = NULL; 
-    while (temp!=NULL)
-    {
-        Node* front = temp->next;
-        temp->next = prev;
-        prev = temp;
-        temp = front;
+bool detectLoop(Node *head){
+    Node* slow = head;
+    Node *fast = head;
+    while(fast!=NULL&&fast->next!=NULL){
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow==fast){
+            return true;
+        }
     }
-    return prev;
+    return false;
 }
 
     int main()
@@ -77,7 +75,5 @@ Node *reverseList(struct Node *head){
     vector<int> v1 = {1, 2, 3};
     Node* head = constructLL(v1);
     printLL(head);
-    Node* head2=reverseList(head);
-    printLL(head2);
     return 0;
 }
