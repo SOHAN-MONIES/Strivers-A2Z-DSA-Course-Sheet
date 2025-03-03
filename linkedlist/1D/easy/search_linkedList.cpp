@@ -1,4 +1,4 @@
-// URL: https://www.geeksforgeeks.org/problems/search-in-linked-list-1664434326/1
+// URL: https://www.geeksforgeeks.org/problems/search-in-linked-list-1664434326/
 #include <bits/stdc++.h>
 using namespace std;
 

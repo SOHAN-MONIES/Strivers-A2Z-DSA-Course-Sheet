@@ -131,26 +131,71 @@ Node *deleteNodevalue(Node *head, int x)
     return head;
 }
 
-Node *inserthead(Node *head, int x)
+Node *insertHead(Node *head, int x)
 {
     Node *temp = new Node(x);
     temp->next = head;
     return temp;
 }
 
-Node *inserthead(Node *head, int x)
+Node *insertTail(Node *head, int x)
 {
-    Node *temp = new Node(x);
-    temp->next = head;
-    return temp;
+
+    if (head == NULL)
+    {
+        Node *temp = new Node(x);
+        return temp;
+    }
+    Node *temp = head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+    Node *el = new Node(x);
+    temp->next = el;
+    return head;
+}
+
+Node *InsertPosition(Node *head, int pos, int element)
+{
+    if (head == NULL)
+    {
+        if (pos == 1)
+        {
+            return new Node(element);
+        }
+        else
+            return NULL;
+    }
+    if (pos == 1)
+    {
+        Node *temp = new Node(element);
+        temp->next = head;
+        head = temp;
+    }
+    int cnt = 0;
+    Node *temp = head;
+    while (temp != NULL)
+    {
+        cnt++;
+        if (cnt == pos - 1)
+        {
+            Node *ele = new Node(element);
+            ele->next = temp->next;
+            temp->next = ele;
+            break;
+        }
+        temp = temp->next;
+    }
+    return head;
 }
 
 int main()
 {
-    vector<int> v1 = {};
+    vector<int> v1 = {1, 2, 3};
     Node *head = constructLL(v1);
     printLL(head);
-    Node *head2 = inserthead(head, 2);
+    Node *head2 = InsertPosition(head, 5, 5);
     printLL(head2);
 
     return 0;
