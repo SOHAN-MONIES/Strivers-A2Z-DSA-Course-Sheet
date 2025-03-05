@@ -1,2 +1,2 @@
 
-            temp = temp->next;
+    temp = head;
