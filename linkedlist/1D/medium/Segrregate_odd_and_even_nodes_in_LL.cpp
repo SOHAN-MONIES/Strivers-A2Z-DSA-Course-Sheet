@@ -1,43 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Node
+class ListNode
 {
 public:
     int data;
-    Node *next;
+    ListNode *next;
 
-    Node()
+    ListNode()
     {
         data = 0;
         next = NULL;
     }
 
-    Node(int data)
+    ListNode(int data)
     {
         this->data = data;
         this->next = NULL;
     }
 };
 
-Node *constructLL(vector<int> &arr)
+ListNode *constructLL(vector<int> &arr)
 {
     if (arr.empty())
         return NULL;
-    Node *head = new Node(arr[0]);
-    Node *mover = head;
+    ListNode *head = new ListNode(arr[0]);
+    ListNode *mover = head;
     for (int i = 1; i < arr.size(); i++)
     {
-        Node *temp = new Node(arr[i]);
+        ListNode *temp = new ListNode(arr[i]);
         mover->next = temp;
         mover = mover->next;
     }
     return head;
 }
 
-void printLL(Node *head)
+void printLL(ListNode *head)
 {
-    Node *temp = head;
+    ListNode *temp = head;
     while (temp != NULL)
     {
         if (temp->next == NULL)
@@ -53,14 +53,14 @@ void printLL(Node *head)
     cout << endl;
 }
 
-Node *oddEvenList(Node *head)
+ListNode *oddEvenList(ListNode *head)
 {
     if (head == NULL || head->next == NULL)
         return head;
-    Node *odd = head;
-    Node *even = head->next;
-    Node *evenHead = head->next;
-    while (even != NULL && even->next != NULL)
+    ListNode *odd = head;
+    ListNode *even = head->next;
+    ListNode *evenHead = head->next;
+    while (odd->next != NULL && even->next != NULL)
     {
         odd->next = even->next;
         odd = odd->next;
@@ -74,9 +74,9 @@ Node *oddEvenList(Node *head)
 int main()
 {
     vector<int> v1 = {1, 2, 3, 4, 5};
-    Node *head = constructLL(v1);
+    ListNode *head = constructLL(v1);
     printLL(head);
-    Node *head1 = oddEvenList(head);
+    ListNode *head1 = oddEvenList(head);
     printLL(head1);
     return 0;
 }

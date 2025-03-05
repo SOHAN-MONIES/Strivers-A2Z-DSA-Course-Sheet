@@ -1,43 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Node
+class ListNode
 {
 public:
     int data;
-    Node *next;
+    ListNode *next;
 
-    Node()
+    ListNode()
     {
         data = 0;
         next = NULL;
     }
 
-    Node(int data)
+    ListNode(int data)
     {
         this->data = data;
         this->next = NULL;
     }
 };
 
-Node *constructLL(vector<int> &arr)
+ListNode *constructLL(vector<int> &arr)
 {
     if (arr.empty())
         return NULL;
-    Node *head = new Node(arr[0]);
-    Node *mover = head;
+    ListNode *head = new ListNode(arr[0]);
+    ListNode *mover = head;
     for (int i = 1; i < arr.size(); i++)
     {
-        Node *temp = new Node(arr[i]);
+        ListNode *temp = new ListNode(arr[i]);
         mover->next = temp;
         mover = mover->next;
     }
     return head;
 }
 
-void printLL(Node *head)
+void printLL(ListNode *head)
 {
-    Node *temp = head;
+    ListNode *temp = head;
     while (temp != NULL)
     {
         if (temp->next == NULL)
@@ -53,15 +53,15 @@ void printLL(Node *head)
     cout << endl;
 }
 
-Node *ReverseLL(Node *head2)
+ListNode *ReverseLL(ListNode *head2)
 {
-    Node *prev = NULL;
+    ListNode *prev = NULL;
     if (head2 == NULL || head2->next == NULL)
         return head2;
-    Node *temp = head2;
+    ListNode *temp = head2;
     while (temp != NULL)
     {
-        Node *front = temp->next;
+        ListNode *front = temp->next;
         temp->next = prev;
         prev = temp;
         temp = front;
@@ -69,19 +69,19 @@ Node *ReverseLL(Node *head2)
     return prev;
 }
 
-bool isPalindrome(Node *head)
+bool isPalindrome(ListNode *head)
 {
     if (head->next == NULL)
         return true;
-    Node *slow = head;
-    Node *fast = head;
+    ListNode *slow = head;
+    ListNode *fast = head;
     while (fast->next != NULL && fast->next->next != NULL)
     {
         slow = slow->next;
         fast = fast->next->next;
     }
-    Node *first = head;
-    Node *second = ReverseLL(slow->next);
+    ListNode *first = head;
+    ListNode *second = ReverseLL(slow->next);
     while (second != NULL)
     {
         if (first->data != second->data)

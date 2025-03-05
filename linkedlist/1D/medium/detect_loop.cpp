@@ -1,40 +1,51 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Node {
+class ListNode
+{
 public:
     int data;
-    Node *next;
+    ListNode *next;
 
-    Node() {
+    ListNode()
+    {
         data = 0;
         next = NULL;
     }
 
-    Node(int data) {
+    ListNode(int data)
+    {
         this->data = data;
         this->next = NULL;
     }
 };
 
-Node* constructLL(vector<int>& arr) {
-    if (arr.empty()) return NULL;
-    Node* head = new Node(arr[0]);
-    Node* mover = head;
-    for (int i = 1; i < arr.size(); i++) {
-        Node* temp = new Node(arr[i]);
+ListNode *constructLL(vector<int> &arr)
+{
+    if (arr.empty())
+        return NULL;
+    ListNode *head = new ListNode(arr[0]);
+    ListNode *mover = head;
+    for (int i = 1; i < arr.size(); i++)
+    {
+        ListNode *temp = new ListNode(arr[i]);
         mover->next = temp;
         mover = mover->next;
     }
     return head;
 }
 
-void printLL(Node* head) {
-    Node* temp = head;
-    while (temp != NULL) {
-        if (temp->next == NULL) {
+void printLL(ListNode *head)
+{
+    ListNode *temp = head;
+    while (temp != NULL)
+    {
+        if (temp->next == NULL)
+        {
             cout << temp->data;
-        } else {
+        }
+        else
+        {
             cout << temp->data << "->";
         }
         temp = temp->next;
@@ -57,23 +68,26 @@ void printLL(Node* head) {
 //     return false;
 // }
 
-bool detectLoop(Node *head){
-    Node* slow = head;
-    Node *fast = head;
-    while(fast!=NULL&&fast->next!=NULL){
+bool detectLoop(ListNode *head)
+{
+    ListNode *slow = head;
+    ListNode *fast = head;
+    while (fast != NULL && fast->next != NULL)
+    {
         slow = slow->next;
         fast = fast->next->next;
-        if(slow==fast){
+        if (slow == fast)
+        {
             return true;
         }
     }
     return false;
 }
 
-    int main()
+int main()
 {
     vector<int> v1 = {1, 2, 3};
-    Node* head = constructLL(v1);
+    ListNode *head = constructLL(v1);
     printLL(head);
     return 0;
 }
