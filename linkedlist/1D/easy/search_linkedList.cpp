@@ -2,20 +2,20 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct Node
+struct ListNode
 {
     int data;
-    Node *next;
-    Node(int x)
+    ListNode *next;
+    ListNode(int x)
     {
         data = x;
         next = NULL;
     }
 };
 
-bool searchKey(int n, Node *head, int key)
+bool searchKey(int n, ListNode *head, int key)
 {
-    Node *temp = head;
+    ListNode *temp = head;
     while (temp != NULL)
     {
         if (key == temp->data)

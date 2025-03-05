@@ -1,36 +1,36 @@
 // URL: https://www.geeksforgeeks.org/problems/introduction-to-linked-list/1
 #include <bits/stdc++.h>
 using namespace std;
-class Node
+class ListNode
 {
 public:
     int data;
-    Node *next;
-    Node(int val)
+    ListNode *next;
+    ListNode(int val)
     {
         data = val;
         next = NULL;
     }
 };
 
-Node *constructLL(vector<int> &arr)
+ListNode *constructLL(vector<int> &arr)
 {
     if (arr.empty())
         return NULL;
-    Node *head = new Node(arr[0]);
-    Node *mover = head;
+    ListNode *head = new ListNode(arr[0]);
+    ListNode *mover = head;
     for (int i = 1; i < arr.size(); i++)
     {
-        Node *temp = new Node(arr[i]);
+        ListNode *temp = new ListNode(arr[i]);
         mover->next = temp;
         mover = mover->next;
     }
     return head;
 }
 
-void printLL(Node *head)
+void printLL(ListNode *head)
 {
-    Node *temp = head;
+    ListNode *temp = head;
     while (temp != NULL)
     {
         if (temp->next == NULL)
@@ -46,24 +46,24 @@ void printLL(Node *head)
     cout << endl;
 }
 
-Node *deletehead(Node *head)
+ListNode *deletehead(ListNode *head)
 {
     if (head == NULL)
         return head;
-    Node *temp = head;
+    ListNode *temp = head;
     head = head->next;
     delete temp;
     return head;
 }
 
-Node *deleteTail(Node *head)
+ListNode *deleteTail(ListNode *head)
 {
 
     if (head == NULL || head->next == NULL)
     {
         return NULL;
     }
-    Node *temp = head;
+    ListNode *temp = head;
     while (temp->next->next != NULL)
     {
         temp = temp->next;
@@ -73,19 +73,19 @@ Node *deleteTail(Node *head)
     return head;
 }
 
-Node *deleteNode(Node *head, int x)
+ListNode *deleteNode(ListNode *head, int x)
 {
     if (head == nullptr)
         return nullptr;
     if (x == 1)
     {
-        Node *temp = head;
+        ListNode *temp = head;
         head = head->next;
         delete temp;
         return head;
     }
-    Node *temp = head;
-    Node *prev = NULL;
+    ListNode *temp = head;
+    ListNode *prev = NULL;
     int cnt = 0;
     while (temp != NULL)
     {
@@ -102,19 +102,19 @@ Node *deleteNode(Node *head, int x)
     return head;
 }
 
-Node *deleteNodevalue(Node *head, int x)
+ListNode *deleteNodevalue(ListNode *head, int x)
 {
     if (head == nullptr)
         return nullptr;
     if (head->data == x)
     {
-        Node *temp = head;
+        ListNode *temp = head;
         head = head->next;
         delete temp;
         return head;
     }
-    Node *temp = head;
-    Node *prev = NULL;
+    ListNode *temp = head;
+    ListNode *prev = NULL;
 
     while (temp != NULL)
     {
@@ -131,56 +131,56 @@ Node *deleteNodevalue(Node *head, int x)
     return head;
 }
 
-Node *insertHead(Node *head, int x)
+ListNode *insertHead(ListNode *head, int x)
 {
-    Node *temp = new Node(x);
+    ListNode *temp = new ListNode(x);
     temp->next = head;
     return temp;
 }
 
-Node *insertTail(Node *head, int x)
+ListNode *insertTail(ListNode *head, int x)
 {
 
     if (head == NULL)
     {
-        Node *temp = new Node(x);
+        ListNode *temp = new ListNode(x);
         return temp;
     }
-    Node *temp = head;
+    ListNode *temp = head;
     while (temp->next != NULL)
     {
         temp = temp->next;
     }
-    Node *el = new Node(x);
+    ListNode *el = new ListNode(x);
     temp->next = el;
     return head;
 }
 
-Node *InsertPosition(Node *head, int pos, int element)
+ListNode *InsertPosition(ListNode *head, int pos, int element)
 {
     if (head == NULL)
     {
         if (pos == 1)
         {
-            return new Node(element);
+            return new ListNode(element);
         }
         else
             return NULL;
     }
     if (pos == 1)
     {
-        Node *temp = new Node(element);
+        ListNode *temp = new ListNode(element);
         temp->next = head;
         head = temp;
     }
     int cnt = 0;
-    Node *temp = head;
+    ListNode *temp = head;
     while (temp != NULL)
     {
         cnt++;
         if (cnt == pos - 1)
         {
-            Node *ele = new Node(element);
+            ListNode *ele = new ListNode(element);
             ele->next = temp->next;
             temp->next = ele;
             break;
@@ -193,9 +193,9 @@ Node *InsertPosition(Node *head, int pos, int element)
 int main()
 {
     vector<int> v1 = {1, 2, 3};
-    Node *head = constructLL(v1);
+    ListNode *head = constructLL(v1);
     printLL(head);
-    Node *head2 = InsertPosition(head, 5, 5);
+    ListNode *head2 = InsertPosition(head, 5, 5);
     printLL(head2);
 
     return 0;

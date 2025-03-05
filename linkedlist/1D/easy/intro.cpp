@@ -1,19 +1,22 @@
-// URL: 
+// URL:
 #include <bits/stdc++.h>
 using namespace std;
 
-struct Node{
+struct ListNode
+{
     int data;
-    Node *next;
-    Node(int data1,Node* next1){
+    ListNode *next;
+    ListNode(int data1, ListNode *next1)
+    {
         data = data1;
         next = next1;
     }
 };
 
-int main() {
+int main()
+{
     int arr[5] = {0, 1, 2, 3, 4};
-    Node* first = new Node(arr[0], nullptr);
+    ListNode *first = new ListNode(arr[0], nullptr);
     cout << first->next;
     return 0;
 }

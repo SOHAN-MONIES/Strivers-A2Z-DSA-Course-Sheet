@@ -1,33 +1,31 @@
 // URL: https://www.geeksforgeeks.org/problems/count-nodes-of-linked-list/0
 #include <bits/stdc++.h>
 using namespace std;
-class Node
+class ListNode
 {
 public:
     int data;
-    Node *next;
+    ListNode *next;
 
     // Default constructor
-    Node()
+    ListNode()
     {
         data = 0;
         next = NULL;
     }
 
     // Parameterised Constructor
-    Node(int data)
+    ListNode(int data)
     {
         this->data = data;
         this->next = NULL;
     }
 };
 
-
-
-int printLength(Node *head)
+int printLength(ListNode *head)
 {
     int cnt = 0;
-    Node *temp = head;
+    ListNode *temp = head;
     while (temp != NULL)
     {
         cnt++;
@@ -35,4 +33,3 @@ int printLength(Node *head)
     }
     return cnt;
 }
-
