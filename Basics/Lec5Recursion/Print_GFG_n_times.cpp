@@ -2,13 +2,12 @@
 #include <bits/stdc++.h>
 #include <iostream>
 using namespace std;
-int i = 1;
 void printGfg(int N)
 {
-    if (i > N)
+    if (N == 0)
         return;
-    cout << "GFG ";
-    i++;
+    cout << "GFG" << " ";
+    N--;
     printGfg(N);
 }
 
