@@ -8,7 +8,7 @@ bool ispossible(vector<int> &nums, int threshold, int m)
     int sum = 0;
     for (auto num : nums)
     {
-        sum += ceil((double)num / m); //make sure this is double
+        sum += ceil((double)num / m); // make sure this is double
     }
     return sum <= threshold;
 }
@@ -16,7 +16,7 @@ bool ispossible(vector<int> &nums, int threshold, int m)
 int smallestDivisor(vector<int> &nums, int threshold)
 {
     int l = 1;
-    int h = *max_element(nums.begin(),nums.end());
+    int h = *max_element(nums.begin(), nums.end());
     int ans = -1;
     while (l <= h)
     {
@@ -36,7 +36,7 @@ int smallestDivisor(vector<int> &nums, int threshold)
 
 int main()
 {
-    vector<int> v1 = {2 ,3 ,7 ,4 ,10};
+    vector<int> v1 = {2, 3, 7, 4, 10};
     cout << smallestDivisor(v1, 5);
     return 0;
 }

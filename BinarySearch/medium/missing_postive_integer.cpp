@@ -8,35 +8,39 @@ using namespace std;
 //     for(int num:arr){
 //         if(num<=k)
 //             k++;
-//         else 
+//         else
 //             break;
 //     }
 //     return k;
 // }
 
-int findKthPositive(vector<int> &arr, int k){
+int findKthPositive(vector<int> &arr, int k)
+{
     int l = 0;
     int h = arr.size() - 1;
-    while (l<=h){
+    while (l <= h)
+    {
         int m = (l + h) / 2;
         int missing = arr[m] - (m + 1);
-        if(missing>=k){
+        if (missing >= k)
+        {
             h = m - 1;
         }
-        else{
+        else
+        {
             l = m + 1;
         }
     }
-    return l+k;
+    return l + k;
 }
 
-    int main()
+int main()
 {
     vector<int> v1 = {2, 3, 4, 7, 11};
-    cout<<findKthPositive(v1, 5);
-   // cout << missingNumber(v1);
+    cout << findKthPositive(v1, 5);
+    // cout << missingNumber(v1);
     return 0;
 }
 
-//h = l - 1;
-//l+k  h+1+k
+// h = l - 1;
+// l+k  h+1+k

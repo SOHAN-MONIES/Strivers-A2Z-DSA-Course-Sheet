@@ -45,6 +45,6 @@ int shipWithinDays(vector<int> &weights, int days)
 
 int main()
 {
-    
+
     return 0;
 }

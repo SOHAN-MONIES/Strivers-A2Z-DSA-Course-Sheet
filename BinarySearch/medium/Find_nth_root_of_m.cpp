@@ -9,14 +9,14 @@ int nthRoot(int n, int m)
     int h = m;
     while (l <= h)
     {
-        int mid= (l + h) / 2;
+        int mid = (l + h) / 2;
         if (pow(mid, n) == m)
         {
             return mid;
         }
         if (pow(mid, n) > m)
         {
-            h = mid- 1;
+            h = mid - 1;
         }
         else
         {

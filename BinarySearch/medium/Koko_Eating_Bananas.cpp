@@ -34,8 +34,6 @@ int minEatingSpeed(vector<int> &piles, int h)
     return ans;
 }
 
-
-
 // int minEatingSpeed(vector<int> &piles, int h)
 // {
 //     int maxh = *max_element(piles.begin(), piles.end());
@@ -51,7 +49,7 @@ int minEatingSpeed(vector<int> &piles, int h)
 
 int main()
 {
-    vector<int> v1 = {3,6,7,11};
+    vector<int> v1 = {3, 6, 7, 11};
     cout << minEatingSpeed(v1, 8);
     return 0;
 }
