@@ -1,17 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct TreeNode
+struct Node
 {
     int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+    Node *left;
+    Node *right;
+    Node() : val(0), left(nullptr), right(nullptr) {}
+    Node(int x) : val(x), left(nullptr), right(nullptr) {}
+    Node(int x, Node *left, Node *right) : val(x), left(left), right(right) {}
 };
 
-vector<int> preorderTraversal(TreeNode *root)
+vector<int> preorderTraversal(Node *root)
 {
     vector<int> v1;
     if (root == NULL)
@@ -29,12 +29,12 @@ vector<int> preorderTraversal(TreeNode *root)
 int main()
 {
     // Create a binary tree
-    TreeNode *root = new TreeNode(1);
-    root->left = new TreeNode(2);
-    root->right = new TreeNode(3);
-    root->left->left = new TreeNode(4);
-    root->left->right = new TreeNode(5);
-    root->right->right = new TreeNode(6);
+    Node *root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+    root->right->right = new Node(6);
 
     // Perform preorder traversal
     vector<int> result = preorderTraversal(root);
