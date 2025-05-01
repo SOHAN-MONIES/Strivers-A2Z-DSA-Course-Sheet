@@ -2,6 +2,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Use bfs because ur going lvl by lvl with unit time
+
 int orangesRotting(vector<vector<int>> &mat)
 {
 
