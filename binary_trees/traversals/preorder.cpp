@@ -1,24 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct Node
+struct TreeNode
 {
-    int val;
-    Node *left;
-    Node *right;
-    Node() : val(0), left(nullptr), right(nullptr) {}
-    Node(int x) : val(x), left(nullptr), right(nullptr) {}
-    Node(int x, Node *left, Node *right) : val(x), left(left), right(right) {}
+    int data;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : data(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : data(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : data(x), left(left), right(right) {}
 };
 
-vector<int> preorderTraversal(Node *root)
+vector<int> preorderTraversal(TreeNode *root)
 {
     vector<int> v1;
     if (root == NULL)
     {
         return v1;
     }
-    v1.push_back(root->val);
+    v1.push_back(root->data);
     vector<int> left = preorderTraversal(root->left);
     v1.insert(v1.end(), left.begin(), left.end());
     vector<int> right = preorderTraversal(root->right);
@@ -29,12 +29,12 @@ vector<int> preorderTraversal(Node *root)
 int main()
 {
     // Create a binary tree
-    Node *root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->left->right = new Node(5);
-    root->right->right = new Node(6);
+    TreeNode *root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+    root->right->right = new TreeNode(6);
 
     // Perform preorder traversal
     vector<int> result = preorderTraversal(root);
