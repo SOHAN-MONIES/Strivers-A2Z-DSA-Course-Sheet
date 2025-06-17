@@ -34,7 +34,7 @@ vector<int> shortestPath(int V, int E, vector<vector<int>> &edges)
         }
     }
 
-    vector<int> distance(V, INT_MAX);
+    vector<int> distance(V, -1);
     distance[0] = 0;
     while (!st.empty())
     {
@@ -44,19 +44,13 @@ vector<int> shortestPath(int V, int E, vector<vector<int>> &edges)
         {
             int v = it.first;
             int wt = it.second;
-            if (distance[node] + wt < distance[v])
+            if (distance[v] == -1 || distance[node] + wt < distance[v])
             {
                 distance[v] = distance[node] + wt;
             }
         }
     }
-    for (auto &dist : distance)
-    {
-        if (dist == INT_MAX)
-        {
-            dist = -1;
-        }
-    }
+
     return distance;
 }
 int main()
