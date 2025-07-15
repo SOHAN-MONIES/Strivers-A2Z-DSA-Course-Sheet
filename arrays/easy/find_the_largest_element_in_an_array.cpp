@@ -3,17 +3,15 @@
 #include <iostream>
 using namespace std;
 
-int largest(vector<int> &arr)
-{
-    int max = arr[0];
-    for (auto num : arr)
-    {
-        if (max < num)
-            max = num;
+    int largest(vector<int> &arr) {
+        int large=arr[0];
+        for(int i=1;i<arr.size();i++){
+            if(large<arr[i]){
+                large=arr[i];
+            }
+        }
+        return large;
     }
-    return max;
-}
-
 int main()
 {
 
