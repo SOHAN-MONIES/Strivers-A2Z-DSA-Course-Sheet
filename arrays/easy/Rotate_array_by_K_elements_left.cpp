@@ -1,7 +1,27 @@
-// URL:-
+// URL:-https://leetcode.com/problems/rotate-array/
 #include <bits/stdc++.h>
 #include <iostream>
 using namespace std;
+
+  void rotate(vector<int>& nums, int k) {
+        int n=nums.size();
+        k=k%n;
+        vector<int> numsDuplicate(n-k);
+        for(int i=0;i<n-k;i++){
+            numsDuplicate[i]=nums[i];
+        }
+        int j=0;
+        for(int i=n-k;i<n;i++){
+            nums[j]=nums[i];
+            j++;
+        }
+        int i=0;
+        for(int k=j;k<n;k++){
+            nums[k]=numsDuplicate[i];
+            i++;
+        }
+    }
+
 
 void rotateArr(vector<int> &arr, int d)
 {
