@@ -4,21 +4,26 @@
 using namespace std;
 void moveZeroes(vector<int> &nums)
 {
-    int i = 0;
-    for (int j = 1; j < nums.size(); j++)
+    // find first zero and and its index stored to j
+    int j;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (nums[i] == 0)
+        {
+            j = i;
+            break;
+        }
+    }
+    // whenever u find a non zero swap element of arr[i] and arr[j]
+    for (int i = j + 1; i < nums.size(); i++)
     {
         if (nums[i] != 0)
         {
-            i++;
-        }
-        if (nums[i] == 0 && nums[j] != 0)
-        {
             swap(nums[i], nums[j]);
-            i++;
+            j++;
         }
     }
 }
-
 int main()
 {
 
