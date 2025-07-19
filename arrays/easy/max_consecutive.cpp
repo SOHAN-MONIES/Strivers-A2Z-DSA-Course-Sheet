@@ -1,29 +1,25 @@
-// URL:
+// URL:https://leetcode.com/problems/max-consecutive-ones/
 #include <bits/stdc++.h>
 #include <iostream>
 using namespace std;
 int findMaxConsecutiveOnes(vector<int> &nums)
 {
-    int maxCount = 0;
     int cnt = 0;
-    int i = 0;
-    for (int j = 0; j < nums.size(); j++)
+    int max_cnt = 0;
+    for (auto num : nums)
     {
-        if (nums[j] == 1)
+        if (num == 1)
         {
-            cnt = j - i + 1;
-            if (cnt > maxCount)
-            {
-                maxCount = cnt;
-            }
+            cnt++;
         }
         else
         {
-            i = j + 1;
             cnt = 0;
         }
+        max_cnt = max(cnt, max_cnt);
     }
-    return maxCount;
+
+    return max_cnt;
 }
 
 int main()
