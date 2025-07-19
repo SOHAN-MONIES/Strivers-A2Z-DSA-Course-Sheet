@@ -2,9 +2,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 /*
-XOR all indices from 0 to n with all elements in the array.
-Due to XOR properties, duplicates cancel out, leaving the missing number.
-Return res ^ n to include the last index n in the result
+✅ Algorithm to Find Missing Number Using XOR
+
+1. XOR all indices from 0 to n-1 with all elements in the array.
+2. Due to XOR properties, duplicates cancel out (a ^ a = 0).
+3. We're missing one number in [0, n], so include 'n' at the end: res ^ n.
+4. The result will be the missing number.
 */
 
 int missingNumber(vector<int> &nums)

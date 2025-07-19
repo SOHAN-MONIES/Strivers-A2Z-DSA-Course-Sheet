@@ -2,6 +2,14 @@
 #include <bits/stdc++.h>
 #include <iostream>
 using namespace std;
+// ✅ Algorithm to Move All Zeroes to End (In-Place, Order Preserved)
+
+// 1. Find the first zero in the array, store its index in 'j'.
+// 2. From index j+1 to end of array:
+//    - If nums[i] != 0:
+//      - Swap nums[i] and nums[j].
+//      - Increment j (points to next zero position).
+
 void moveZeroes(vector<int> &nums)
 {
     // find first zero and and its index stored to j
@@ -26,6 +34,7 @@ void moveZeroes(vector<int> &nums)
 }
 int main()
 {
-
+    vector<int> arr = {0, 1, 0, 3, 12};
+    moveZeroes(arr);
     return 0;
 }
