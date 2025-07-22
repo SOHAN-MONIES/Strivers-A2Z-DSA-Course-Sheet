@@ -23,41 +23,42 @@ using namespace std;
  🧠 Space Complexity: O(1) (excluding result array)
  - Only uses variables for boundaries.
  */
-vector<int> spiralOrder(vector<vector<int>> &matrix)
+vector<int> spirallyTraverse(vector<vector<int>> &mat)
 {
+    // code here
     vector<int> res;
-    int rows = matrix.size();
-    int cols = matrix[0].size();
+    int rows = mat.size();
+    int cols = mat[0].size();
     int left = 0, top = 0, right = cols - 1, bottom = rows - 1;
-    while (left <= right && top <= bottom) // left and right can be equal hence equal to
+    while (left <= right && top <= bottom)
     {
-        // → Traverse top row
+        // PRINTING TOP ROW
         for (int i = left; i <= right; i++)
         {
-            res.push_back(matrix[top][i]);
+            res.push_back(mat[top][i]);
         }
         top++;
-        // ↓ Traverse right column
+        // PRINTING RIGHT COL  top->bottom , right is constant
         for (int i = top; i <= bottom; i++)
         {
-            res.push_back(matrix[i][right]);
+            res.push_back(mat[i][right]);
         }
         right--;
-        // ← Traverse bottom row
-        if (top <= bottom) // in a single array left direction elements will be printed ,if there  are multiple rows bottom will never be lesser than top
-        {
+        // PRINTING BOTTOM ROW bottom is constant,right to left
+        if (top <= bottom)
+        { // single row array , will result in printing of bottom row without this condition
             for (int i = right; i >= left; i--)
             {
-                res.push_back(matrix[bottom][i]);
+                res.push_back(mat[bottom][i]);
             }
             bottom--;
         }
-        // ↑ Traverse left column
-        if (left <= right) // in a single array top direction elements will be printed again , ,if there are multiple columns, right will be less right
-        {
+        // PRINTING LEFT COLUMN bottom to top, left is constant
+        if (left <= right)
+        { // single col array , will result in printing of left column without this condition
             for (int i = bottom; i >= top; i--)
             {
-                res.push_back(matrix[i][left]);
+                res.push_back(mat[i][left]);
             }
             left++;
         }
@@ -70,6 +71,6 @@ int main()
         {1, 2, 3, 4},
         {5, 6, 7, 8},
         {9, 10, 11, 12}};
-    spiralOrder(vec);
+    spirallyTraverse(vec);
     return 0;
 }

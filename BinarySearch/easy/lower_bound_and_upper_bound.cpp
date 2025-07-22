@@ -45,10 +45,10 @@ int upper__bound(vector<int> a, int x)
 
 int main()
 {
-    vector<int> v1 = {1, 2, 4, 6, 7, 8};
+    vector<int> v1 = {0, 0, 0, 0};
     cout << lower__bound(v1, 20) << endl;
     cout << upper__bound(v1, 6) << endl;
-    cout << distance(v1.begin(), lower_bound(v1.begin(), v1.end(), 6))<<endl;
+    cout << distance(v1.begin(), lower_bound(v1.begin(), v1.end(), 1)) << endl;
     cout << distance(v1.begin(), upper_bound(v1.begin(), v1.end(), 6));
     return 0;
 }
