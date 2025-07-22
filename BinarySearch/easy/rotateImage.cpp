@@ -33,17 +33,6 @@ using namespace std;
    🧠 Space Complexity: O(1)
    - In-place, no extra matrix used.
    */
-void reverseArray(vector<int> &arr)
-{
-    int x = 0;
-    int y = arr.size() - 1;
-    while (x < y)
-    {
-        swap(arr[x], arr[y]);
-        x++;
-        y--;
-    }
-}
 
 void rotate(vector<vector<int>> &matrix)
 {
@@ -53,7 +42,7 @@ void rotate(vector<vector<int>> &matrix)
     // TRANSPOSE
     for (int i = 0; i < rows; i++)
     {
-        for (int j = 0; j < cols; j++)
+        for (int j = 0; j < cols; j++) // You can skip if checking if u start j=i+1
         {
             if (i >= j) // No need of swapping diagonal elements and no need of swapping again
             {
@@ -64,7 +53,7 @@ void rotate(vector<vector<int>> &matrix)
     // REVERSE EVERY ARRAY OF MATRIX
     for (int i = 0; i < rows; i++)
     {
-        reverseArray(matrix[i]);
+        reverse(matrix[i].begin(), matrix[i].end());
     }
 }
 int main()
