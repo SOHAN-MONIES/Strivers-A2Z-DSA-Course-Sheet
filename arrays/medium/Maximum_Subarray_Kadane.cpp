@@ -48,25 +48,44 @@ using namespace std;
 //     return v1;
 // }
 
+/*
+Algorithm: Kadane's Algorithm – Maximum Subarray Sum
+
+Time Complexity: O(n)
+    - Single pass through the array
+
+Space Complexity: O(1)
+    - Only two variables used (sum, max_sum)
+
+1. Initialize max_sum to INT_MIN to handle all-negative arrays.
+2. Initialize current sum to 0.
+3. Traverse the array:
+    - Add current element to sum
+    - Update max_sum if sum is greater
+    - If sum drops below 0, reset it to 0 (we discard the previous subarray)
+4. Return max_sum which holds the maximum subarray sum.
+*/
+
 int maxSubArray(vector<int> &nums)
 {
-    int maxSum = INT_MIN;
-    int current_sum = 0;
-    for (auto num : nums)
+    int max_sum = INT_MIN; // To handle negative-only arrays
+    int sum = 0;
+
+    for (int i = 0; i < nums.size(); i++)
     {
-        current_sum = max(num, current_sum + num);
-        maxSum = max(maxSum, current_sum);
+        sum += nums[i];              // Add current element
+        max_sum = max(max_sum, sum); // Update max_sum if needed
+        if (sum < 0)
+            sum = 0; // Reset sum if it drops below 0
     }
-    return maxSum;
+
+    return max_sum;
 }
 
 int main()
 {
     vector<int> v1 = {4, 3, 1, 5, 6};
     cout << maxSubArray(v1);
-    // vector<int> v2 = maxSubArraywithaddress(v1);
-    // for(auto num:v2){
-    //     cout << num;
-    // }
+
     return 0;
 }
