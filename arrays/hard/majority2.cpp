@@ -6,35 +6,40 @@ using namespace std;
 ✅ Algorithm: Boyer-Moore Voting Algorithm – Majority Element
 
 Problem:
-- Find the element that appears more than ⌊n/2⌋ times in the array.
+- Find the element that appears more than ⌊n/2⌋ times in an array.
 - Such an element is guaranteed to exist.
 
 Steps:
 1. Initialize:
-   - candidate = nums[0]
-   - count = 1
-2. Traverse the array:
-   - If count == 0 → set current element as new candidate and count = 1.
-   - Else if current element == candidate → increment count.
-   - Else → decrement count.
-3. The final candidate is the majority element (guaranteed by the problem).
+   - candidate (no initial value needed)
+   - count = 0
+2. Traverse through each element in nums:
+   a) If count == 0:
+         - Set candidate to current element
+         - Set count = 1
+   b) Else if current element == candidate:
+         - Increment count
+   c) Else:
+         - Decrement count
+3. After one full pass, candidate holds the majority element.
+4. Return candidate.
 
 ⚠️ Assumption:
-- The input always has a majority element.
+- The array always contains a majority element (appears > n/2 times).
 
 🕒 Time Complexity: O(n)
-   - Single pass through the array.
+   - Only one pass over the array.
 
 🧠 Space Complexity: O(1)
-   - Uses only two variables.
+   - Only two variables used.
 */
 
 int majorityElement(vector<int> &nums)
 {
-    int candidate = nums[0];
-    int count = 1;
+    int candidate;
+    int count = 0;
 
-    for (int i = 1; i < nums.size(); i++)
+    for (int i = 0; i < nums.size(); i++)
     {
         if (count == 0)
         {
