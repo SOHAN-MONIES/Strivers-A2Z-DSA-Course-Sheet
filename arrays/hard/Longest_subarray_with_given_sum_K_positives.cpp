@@ -41,7 +41,7 @@ int longestSubarray(vector<int> &arr, int k)
     unordered_map<int, int> mpp; // prefix sum -> earliest index
     int sum = 0;
 
-    mpp[0] = -1; // base case: sum 0 exists at index -1  [imp this is base condition for  if first index is equal to sum]
+    mpp[0] = -1; // base case: sum 0 exists at index -1  [imp this is base condition for  if from first index is equal to sum]
 
     for (int i = 0; i < arr.size(); i++)
     {
