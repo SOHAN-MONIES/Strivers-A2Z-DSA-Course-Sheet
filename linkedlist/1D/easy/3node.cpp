@@ -3,7 +3,6 @@ using namespace std;
 
 struct ListNode
 {
-
     int data;
     ListNode *next;
 
@@ -16,6 +15,8 @@ struct ListNode
 
 int main()
 {
+    cout << unitbuf; // enable automatic flushing after every output
+
     ListNode *first = new ListNode(10);
     ListNode *second = new ListNode(20);
     ListNode *third = new ListNode(30);
@@ -29,7 +30,7 @@ int main()
     {
         if (temp->next == NULL)
         {
-            cout << temp->data << endl;
+            cout << temp->data << endl; // endl flushes anyway
         }
         else
         {
