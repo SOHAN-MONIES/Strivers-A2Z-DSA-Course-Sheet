@@ -7,7 +7,7 @@ void printMsg(int n)
     if (n == 0)
         return;
     cout << n << "  ";
-    printMsg(n - 1);
+    printMsg(--n);
 }
 
 int main()
