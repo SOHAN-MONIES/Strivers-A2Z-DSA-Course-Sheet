@@ -1,17 +1,18 @@
-// URL:
+// URL: 
 #include <bits/stdc++.h>
 using namespace std;
 
-
-void swap(int &a,int &b) {
-    a=a^b;
-    b=a^b;
-    a=a^b;
+pair<int, int> get(int a, int b)
+{
+    pair<int, int> p1;
+    a = a ^ b;
+    b = a ^ b;
+    a = a ^ b;
+    p1.first = a;
+    p1.second = b;
+    return p1;
 }
-
 int main() {
-    int a=5,b=6;
-    swap(a,b);
-    cout<<a<<b;
+    
     return 0;
 }
