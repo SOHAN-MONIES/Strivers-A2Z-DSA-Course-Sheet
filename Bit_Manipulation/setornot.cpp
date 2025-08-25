@@ -4,14 +4,11 @@ using namespace std;
 
 bool checkKthBit(int n, int k)
 {
-    int res = (n >> k) & 1;
-    if (res == 0)
-        return false;
-    else
-        return true;
+    return (n >> k) & 1;
 }
 
-int main() {
-    cout<<checkKthBit(17619, 16);
+int main()
+{
+    cout << checkKthBit(17619, 16);
     return 0;
 }
