@@ -4,7 +4,7 @@ using namespace std;
 
 bool checkKthBit(int n, int k)
 {
-    return (n >> k) & 1;
+    return n & 1 << k;
 }
 
 int main()
