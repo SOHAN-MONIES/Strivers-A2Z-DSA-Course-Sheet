@@ -2,14 +2,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct TreeNode
+struct Node
 {
     int data;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : data(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : data(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : data(x), left(left), right(right) {}
+    Node *left;
+    Node *right;
+    Node() : data(0), left(nullptr), right(nullptr) {}
+    Node(int x) : data(x), left(nullptr), right(nullptr) {}
+    Node(int x, Node *left, Node *right) : data(x), left(left), right(right) {}
 };
 class Solution
 {
@@ -17,7 +17,7 @@ public:
     unordered_map<int, int> inorderIdx;
     int postIdx;
 
-    TreeNode *buildTree(vector<int> &inorder, vector<int> &postorder)
+    Node *buildTree(vector<int> &inorder, vector<int> &postorder)
     {
         for (int i = 0; i < inorder.size(); i++)
         {
@@ -29,14 +29,14 @@ public:
     }
 
 private:
-    TreeNode *dfs(int l, int r, vector<int> &postorder)
+    Node *dfs(int l, int r, vector<int> &postorder)
     {
         if (l > r)
         {
             return nullptr;
         }
 
-        TreeNode *root = new TreeNode(postorder[postIdx--]);
+        Node *root = new Node(postorder[postIdx--]);
         int idx = inorderIdx[root->data];
         root->right = dfs(idx + 1, r, postorder);
         root->left = dfs(l, idx - 1, postorder);

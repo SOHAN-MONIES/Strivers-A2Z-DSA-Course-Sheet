@@ -7,16 +7,16 @@ Given the root of a binary tree, return the zigzag level order traversal of its 
 #include <bits/stdc++.h>
 using namespace std;
 
-struct TreeNode
+struct Node
 {
     int data;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : data(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : data(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : data(x), left(left), right(right) {}
+    Node *left;
+    Node *right;
+    Node() : data(0), left(nullptr), right(nullptr) {}
+    Node(int x) : data(x), left(nullptr), right(nullptr) {}
+    Node(int x, Node *left, Node *right) : data(x), left(left), right(right) {}
 };
-vector<vector<int>> zigzagLevelOrder(TreeNode *root)
+vector<vector<int>> zigzagLevelOrder(Node *root)
 {
     vector<vector<int>> res;
     if (root == NULL)
@@ -24,7 +24,7 @@ vector<vector<int>> zigzagLevelOrder(TreeNode *root)
         return res;
     }
     bool leftToRight = true;
-    queue<TreeNode *> q1;
+    queue<Node *> q1;
     q1.push(root);
     while (!q1.empty())
     {
@@ -32,7 +32,7 @@ vector<vector<int>> zigzagLevelOrder(TreeNode *root)
         vector<int> level(n);
         for (int i = 0; i < n; i++)
         {
-            TreeNode *element = q1.front();
+            Node *element = q1.front();
             q1.pop();
             int index = leftToRight ? i : (n - i - 1); // find whether movement is right to left or left to right
             level[index] = element->data;

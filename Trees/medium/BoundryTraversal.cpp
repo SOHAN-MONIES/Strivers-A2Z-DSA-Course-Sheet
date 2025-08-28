@@ -12,15 +12,15 @@ Reverse Right Boundary: This includes all the nodes on the path from the rightmo
 #include <bits/stdc++.h>
 using namespace std;
 
-class TreeNode
+class Node
 {
 public:
     int data;
-    TreeNode *left;
-    TreeNode *right;
+    Node *left;
+    Node *right;
 
     // Constructor to initialize a new node
-    TreeNode(int val)
+    Node(int val)
     {
         data = val;
         left = NULL;
@@ -28,7 +28,7 @@ public:
     }
 };
 
-void addLeftNodes(TreeNode *root, vector<int> &res)
+void addLeftNodes(Node *root, vector<int> &res)
 {
     if (root == nullptr || (root->left == nullptr && root->right == nullptr))
         return;
@@ -41,7 +41,7 @@ void addLeftNodes(TreeNode *root, vector<int> &res)
         addLeftNodes(root->right, res);
 }
 
-void addLeafNode(TreeNode *root, vector<int> &res)
+void addLeafNode(Node *root, vector<int> &res)
 {
     if (root == nullptr)
         return;
@@ -56,7 +56,7 @@ void addLeafNode(TreeNode *root, vector<int> &res)
     addLeafNode(root->right, res);
 }
 
-void addRightNode(TreeNode *root, vector<int> &rightBoundary)
+void addRightNode(Node *root, vector<int> &rightBoundary)
 {
     if (root == nullptr || (root->left == nullptr && root->right == nullptr))
         return;
@@ -69,7 +69,7 @@ void addRightNode(TreeNode *root, vector<int> &rightBoundary)
     rightBoundary.push_back(root->data); // Store in reverse order
 }
 
-vector<int> boundaryTraversal(TreeNode *root)
+vector<int> boundaryTraversal(Node *root)
 {
     vector<int> res;
     if (root == nullptr)

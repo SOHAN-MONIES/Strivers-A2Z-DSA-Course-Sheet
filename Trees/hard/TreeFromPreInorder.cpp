@@ -2,7 +2,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 // Build Index Map: Store the indices of inorder elements in a map for fast look-up.
 
 // Recursive DFS: Define a recursive dfs function to construct the tree using preorder and inorder sequences.
@@ -15,24 +14,23 @@ using namespace std;
 
 // This will help you recall the logic quickly when revisiting the code.
 
-
-struct TreeNode
+struct Node
 {
     int data;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode() : data(0), left(nullptr), right(nullptr) {}
-    TreeNode(int x) : data(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : data(x), left(left), right(right) {}
+    Node *left;
+    Node *right;
+    Node() : data(0), left(nullptr), right(nullptr) {}
+    Node(int x) : data(x), left(nullptr), right(nullptr) {}
+    Node(int x, Node *left, Node *right) : data(x), left(left), right(right) {}
 };
 
-TreeNode *dfs(vector<int> &preorder, int l, int h, int &pre_index, unordered_map<int, int> &mpp)
+Node *dfs(vector<int> &preorder, int l, int h, int &pre_index, unordered_map<int, int> &mpp)
 {
     if (l > h)
     {
         return nullptr;
     }
-    TreeNode *root = new TreeNode(preorder[pre_index]);
+    Node *root = new Node(preorder[pre_index]);
     int mid = mpp[preorder[pre_index]];
     pre_index++;
 
@@ -42,7 +40,7 @@ TreeNode *dfs(vector<int> &preorder, int l, int h, int &pre_index, unordered_map
     return root;
 }
 
-TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder)
+Node *buildTree(vector<int> &preorder, vector<int> &inorder)
 {
     int pre_index = 0;
     unordered_map<int, int> mpp;

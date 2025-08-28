@@ -1,43 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class TreeNode
+class Node
 {
 public:
     int data;
-    TreeNode *next;
+    Node *next;
 
-    TreeNode()
+    Node()
     {
         data = 0;
         next = NULL;
     }
 
-    TreeNode(int data)
+    Node(int data)
     {
         this->data = data;
         this->next = NULL;
     }
 };
 
-TreeNode *constructLL(vector<int> &arr)
+Node *constructLL(vector<int> &arr)
 {
     if (arr.empty())
         return NULL;
-    TreeNode *head = new TreeNode(arr[0]);
-    TreeNode *mover = head;
+    Node *head = new Node(arr[0]);
+    Node *mover = head;
     for (int i = 1; i < arr.size(); i++)
     {
-        TreeNode *temp = new TreeNode(arr[i]);
+        Node *temp = new Node(arr[i]);
         mover->next = temp;
         mover = mover->next;
     }
     return head;
 }
 
-void printLL(TreeNode *head)
+void printLL(Node *head)
 {
-    TreeNode *temp = head;
+    Node *temp = head;
     while (temp != NULL)
     {
         if (temp->next == NULL)
@@ -74,16 +74,16 @@ void printLL(TreeNode *head)
 //     return head;
 // }
 
-TreeNode *mergeSort(TreeNode *head)
+Node *mergeSort(Node *head)
 {
 }
 
 int main()
 {
     vector<int> v1 = {1, 2, 3, 5, 6, 0};
-    TreeNode *head = constructLL(v1);
+    Node *head = constructLL(v1);
     printLL(head);
-    TreeNode *head1 = mergeSort(head);
+    Node *head1 = mergeSort(head);
     printLL(head1);
     return 0;
 }

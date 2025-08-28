@@ -2,16 +2,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct TreeNode
+struct Node
 {
     int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+    Node *left;
+    Node *right;
+    Node(int x) : val(x), left(nullptr), right(nullptr) {}
+    Node(int x, Node *left, Node *right) : val(x), left(left), right(right) {}
 };
 
-void inorder_helper(TreeNode *root, vector<int> &ans)
+void inorder_helper(Node *root, vector<int> &ans)
 {
     if (!root)
         return;
@@ -21,7 +21,7 @@ void inorder_helper(TreeNode *root, vector<int> &ans)
     inorder_helper(root->right, ans);
 }
 
-vector<int> inorderTraversal(TreeNode *root)
+vector<int> inorderTraversal(Node *root)
 {
     vector<int> ans;
     inorder_helper(root, ans);
@@ -30,16 +30,16 @@ vector<int> inorderTraversal(TreeNode *root)
 
 int main()
 {
-    TreeNode *root = new TreeNode(1);
-    root->left = new TreeNode(2);
-    root->right = new TreeNode(3);
-    root->left->left = new TreeNode(4);
-    root->left->right = new TreeNode(5);
-    root->left->right->left = new TreeNode(8);
-    root->right->left = new TreeNode(6);
-    root->right->right = new TreeNode(7);
-    root->right->right->left = new TreeNode(9);
-    root->right->right->right = new TreeNode(10);
+    Node *root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+    root->left->right->left = new Node(8);
+    root->right->left = new Node(6);
+    root->right->right = new Node(7);
+    root->right->right->left = new Node(9);
+    root->right->right->right = new Node(10);
     vector<int> ans = inorderTraversal(root);
     for (auto ele : ans)
     {
