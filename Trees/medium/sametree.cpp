@@ -17,6 +17,8 @@ struct TreeNode
 
 void dfs(TreeNode *root1, TreeNode *root2, int &flag)
 {
+    if (flag == 0)
+        return;
     if (root1 == nullptr && root2 != nullptr)
     {
         flag = 0;
