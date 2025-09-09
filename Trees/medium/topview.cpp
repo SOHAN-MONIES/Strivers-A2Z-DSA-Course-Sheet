@@ -9,27 +9,38 @@ struct Node
     Node(int x) : data(x), left(nullptr), right(nullptr) {}
     Node(int x, Node *left, Node *right) : data(x), left(left), right(right) {}
 };
-bool helper(Node *root, int targetSum)
+vector<int> topView(Node *root)
 {
-    if (root == nullptr)
+    vector<int> ans;
+    if (!root)
+        return ans;
+
+    queue<pair<Node *, int>> q;
+    map<int, int> mpp; // vertical axis -> value
+
+    q.push({root, 0});
+
+    while (!q.empty())
     {
-        return false;
+        auto [node, vaxis] = q.front();
+        q.pop();
+
+        if (mpp.find(vaxis) == mpp.end())
+            mpp[vaxis] = node->data;
+
+        if (node->left)
+            q.push({node->left, vaxis - 1});
+        if (node->right)
+            q.push({node->right, vaxis + 1});
     }
-    if (root->left == nullptr && root->right == nullptr)
+
+    for (auto &it : mpp)
     {
-        if (targetSum == root->data)
-        {
-            return true;
-        }
-        return false;
+        ans.push_back(it.second);
     }
-    return helper(root->left, targetSum - root->data) || helper(root->right, targetSum - root->data);
+    return ans;
 }
 
-bool hasPathSum(Node *root, int targetSum)
-{
-    return helper(root, targetSum);
-}
 int main()
 {
     Node *root = new Node(1);
@@ -42,6 +53,10 @@ int main()
     root->right->right = new Node(7);
     root->right->right->left = new Node(9);
     root->right->right->right = new Node(10);
-    hasPathSum(root, 21);
+    vector<int> ans = topView(root);
+    for (auto ele : ans)
+    {
+        cout << ele << " ";
+    }
     return 0;
 }

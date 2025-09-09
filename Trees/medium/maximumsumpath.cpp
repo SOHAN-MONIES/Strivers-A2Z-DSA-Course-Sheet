@@ -2,16 +2,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct TreeNode
+struct Node
 {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+    int data;
+    Node *left;
+    Node *right;
+    Node(int x) : data(x), left(nullptr), right(nullptr) {}
+    Node(int x, Node *left, Node *right) : data(x), left(left), right(right) {}
 };
 
-int helper(TreeNode *node, int &distance)
+int helper(Node *node, int &distance)
 {
     if (node == nullptr)
     {
@@ -19,17 +19,17 @@ int helper(TreeNode *node, int &distance)
     }
     int leftsum = max(0, helper(node->left, distance));
     int rightsum = max(0, helper(node->right, distance));
-    distance = max(distance, leftsum + rightsum + node->val);
-    return max(leftsum, rightsum) + node->val;
+    distance = max(distance, leftsum + rightsum + node->data);
+    return max(leftsum, rightsum) + node->data;
 }
 
-int maxPathSum(TreeNode *root)
+int maxPathSum(Node *root)
 {
     int distance = INT_MIN;
     helper(root, distance);
     return distance;
 }
-int dfs(TreeNode *root, int &ans)
+int dfs(Node *root, int &ans)
 {
     if (root == nullptr)
     {
@@ -37,11 +37,11 @@ int dfs(TreeNode *root, int &ans)
     }
     int lt = max(0, dfs(root->left, ans));
     int rt = max(0, dfs(root->right, ans));
-    ans = max(ans, root->val + lt + rt);
-    return max(lt, rt) + root->val;
+    ans = max(ans, root->data + lt + rt);
+    return max(lt, rt) + root->data;
 }
 
-int findMaxSum(TreeNode *root)
+int findMaxSum(Node *root)
 {
     // code here
     int ans = 0;
@@ -50,16 +50,16 @@ int findMaxSum(TreeNode *root)
 }
 int main()
 {
-    TreeNode *root = new TreeNode(1);
-    root->left = new TreeNode(2);
-    root->right = new TreeNode(3);
-    root->left->left = new TreeNode(4);
-    root->left->right = new TreeNode(5);
-    root->left->right->left = new TreeNode(8);
-    root->right->left = new TreeNode(6);
-    root->right->right = new TreeNode(7);
-    root->right->right->left = new TreeNode(9);
-    root->right->right->right = new TreeNode(10);
+    Node *root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+    root->left->right->left = new Node(8);
+    root->right->left = new Node(6);
+    root->right->right = new Node(7);
+    root->right->right->left = new Node(9);
+    root->right->right->right = new Node(10);
     cout << maxPathSum(root);
     cout << findMaxSum(root);
     return 0;

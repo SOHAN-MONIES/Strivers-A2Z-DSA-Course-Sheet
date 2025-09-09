@@ -4,11 +4,11 @@ using namespace std;
 
 struct Node
 {
-    int val;
+    int data;
     Node *left;
     Node *right;
-    Node(int x) : val(x), left(nullptr), right(nullptr) {}
-    Node(int x, Node *left, Node *right) : val(x), left(left), right(right) {}
+    Node(int x) : data(x), left(nullptr), right(nullptr) {}
+    Node(int x, Node *left, Node *right) : data(x), left(left), right(right) {}
 };
 
 void inorder_helper(Node *root, vector<int> &ans)
@@ -17,7 +17,7 @@ void inorder_helper(Node *root, vector<int> &ans)
         return;
 
     inorder_helper(root->left, ans);
-    ans.push_back(root->val);
+    ans.push_back(root->data);
     inorder_helper(root->right, ans);
 }
 

@@ -4,15 +4,17 @@ using namespace std;
 
 void printMsg(int n)
 {
-    if (n == 0)
+  
+    if (n == 5)
         return;
+    printMsg(++n);
     cout << n << "  ";
-    printMsg(--n);
+   
 }
 
 int main()
 {
 
-    printMsg(5);
+    printMsg(1);
     return 0;
 }

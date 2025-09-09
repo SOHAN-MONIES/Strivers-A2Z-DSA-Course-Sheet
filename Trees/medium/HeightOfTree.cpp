@@ -1,28 +1,28 @@
 // URL: https://leetcode.com/problems/maximum-depth-of-binary-tree/
 #include <bits/stdc++.h>
 using namespace std;
-struct TreeNode
+struct Node
 {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+    int data;
+    Node *left;
+    Node *right;
+    Node(int x) : data(x), left(nullptr), right(nullptr) {}
+    Node(int x, Node *left, Node *right) : data(x), left(left), right(right) {}
 };
 // Level Order Solution
-int maxDepthl(TreeNode *root)
+int maxDepthl(Node *root)
 {
     int depth = 0;
     if (root == nullptr)
         return depth;
-    queue<TreeNode *> q1;
+    queue<Node *> q1;
     q1.push(root);
     while (!q1.empty())
     {
         int n = q1.size();
         for (int i = 0; i < n; i++)
         {
-            TreeNode *element = q1.front();
+            Node *element = q1.front();
             q1.pop();
             if (element->left)
             {
@@ -39,7 +39,7 @@ int maxDepthl(TreeNode *root)
 }
 
 // Recursive Solution
-int maxDepth(TreeNode *root)
+int maxDepth(Node *root)
 {
     if (root == NULL)
     {
@@ -52,16 +52,16 @@ int maxDepth(TreeNode *root)
 
 int main()
 {
-    TreeNode *root = new TreeNode(1);
-    root->left = new TreeNode(2);
-    root->right = new TreeNode(3);
-    root->left->left = new TreeNode(4);
-    root->left->right = new TreeNode(5);
-    root->left->right->left = new TreeNode(8);
-    root->right->left = new TreeNode(6);
-    root->right->right = new TreeNode(7);
-    root->right->right->left = new TreeNode(9);
-    root->right->right->right = new TreeNode(10);
+    Node *root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+    root->left->right->left = new Node(8);
+    root->right->left = new Node(6);
+    root->right->right = new Node(7);
+    root->right->right->left = new Node(9);
+    root->right->right->right = new Node(10);
     cout << maxDepth(root);
     return 0;
 }

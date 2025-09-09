@@ -1,16 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct TreeNode
+struct Node
 {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+    int data;
+    Node *left;
+    Node *right;
+    Node(int x) : data(x), left(nullptr), right(nullptr) {}
+    Node(int x, Node *left, Node *right) : data(x), left(left), right(right) {}
 };
 
-int maxDepth(TreeNode *root) // Calculate the depth of the tree
+int maxDepth(Node *root) // Calculate the depth of the tree
 {
     if (root == NULL) // Base case: null node has depth 0
     {
@@ -28,23 +28,23 @@ int maxDepth(TreeNode *root) // Calculate the depth of the tree
 
     return 1 + max(lh, rh); // Return the depth of the tree rooted at this node
 }
-bool isBalanced(TreeNode *root) // Check if the tree is balanced
+bool isBalanced(Node *root) // Check if the tree is balanced
 {
     return maxDepth(root) != -1; // Return true if balanced, false if unbalanced
 }
 int main()
 {
-    TreeNode *root = new TreeNode(1);
-    root->left = new TreeNode(2);
-    root->right = new TreeNode(3);
-    root->left->left = new TreeNode(4);
-    root->left->right = new TreeNode(5);
-    root->left->right->left = new TreeNode(8);
-    root->right->left = new TreeNode(6);
-    root->right->right = new TreeNode(7);
-    root->right->right->left = new TreeNode(9);
-    root->right->right->right = new TreeNode(10);
-    root->right->right->right->right = new TreeNode(11);
+    Node *root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+    root->left->right->left = new Node(8);
+    root->right->left = new Node(6);
+    root->right->right = new Node(7);
+    root->right->right->left = new Node(9);
+    root->right->right->right = new Node(10);
+    root->right->right->right->right = new Node(11);
     cout << isBalanced(root);
     return 0;
 }
