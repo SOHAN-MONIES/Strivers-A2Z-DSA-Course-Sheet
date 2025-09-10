@@ -9,28 +9,52 @@ struct TreeNode
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
-void helper(TreeNode *root, vector<int> &ans)
+// BRUTEFORCE
+//  void helper(TreeNode *root, vector<int> &ans)
+//  {
+//      if (root == nullptr)
+//      {
+//          return;
+//      }
+//      helper(root->left, ans);
+//      ans.push_back(root->val);
+//      helper(root->right, ans);
+//  }
+
+// vector<int> dfs(TreeNode *root)
+// {
+//     vector<int> ans;
+//     helper(root, ans);
+//     return ans;
+// }
+
+// int kthSmallest(TreeNode *root, int k)
+// {
+//     vector<int> inorder = dfs(root);
+//     return inorder[k - 1];
+// }
+void dfs(TreeNode *root, int k, int &ans)
 {
     if (root == nullptr)
     {
         return;
     }
-    helper(root->left, ans);
-    ans.push_back(root->val);
-    helper(root->right, ans);
-}
 
-vector<int> dfs(TreeNode *root)
-{
-    vector<int> ans;
-    helper(root, ans);
-    return ans;
+    dfs(root->left, k, ans);
+    k--;
+    if (k == 0)
+    {
+        ans = root->val;
+        return;
+    }
+    dfs(root->right, k, ans);
 }
 
 int kthSmallest(TreeNode *root, int k)
 {
-    vector<int> inorder = dfs(root);
-    return inorder[k - 1];
+    int ans = -1;
+    dfs(root, k, ans);
+    return ans;
 }
 int main()
 {
