@@ -1,46 +1,63 @@
 // URL: https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/?envType=problem-list-v2&envId=string-matching
 #include <bits/stdc++.h>
 using namespace std;
-vector<int> strStr(string text, string pattern)
-{
-    vector<int> res;
-    int j = 0;
-    int org = 0;
-    for (int i = 0; i < text.size(); i++)
-    {
+// int strStr(string txt, string pat)
+// {
+//     int res = -1;
+//     int j = 0;
+//     int org = 0;
+//     for (int i = 0; i < txt.size(); i++)
+//     {
 
-        if (text[i] == pattern[j])
-        {
-            if (j == 0)
+//         if (txt[i] == pat[j])
+//         {
+//             if (j == 0)
+//             {
+//                 org = i;
+//             }
+//             j++;
+//         }
+//         else if (txt[i] != pat[j])
+//         {
+//             if (j > 0)
+//             {
+//                 i = org;
+//             }
+//             j = 0;
+//         }
+//         if (j == pat.size())
+//         {
+//             return i - pat.size() + 1;
+//         }
+//     }
+
+//     return res;
+// }
+
+int strStr(string txt, string pat)
+{
+    int n = txt.size();
+    int m = pat.size();
+
+    for (int i = 0; i <= n - m; i++)
+    { // starting index in txt
+        int j = 0;
+        for (; j < m; j++)
+        { // check every char in pat
+            if (txt[i+j] != pat[j])
             {
-                org = i;
+                break; // mismatch -> break inner loop
             }
-            j++;
         }
-        else if (text[i] != pattern[j])
+        if (j == m)
         {
-            if (j > 0)
-            {
-                i = org;
-            }
-            j = 0;
-        }
-        if (j == pattern.size())
-        {
-            int ans = i - pattern.size() + 1;
-            res.push_back(ans);
+            return i; // full match found
         }
     }
-
-    return res;
+    return -1; // not found
 }
-
 int main()
 {
-    vector<int> res = strStr("geeksforgeeks", "geek");
-    for (auto ele : res)
-    {
-        cout << ele << " ";
-    }
+    cout << strStr("sadsadh", "sadh");
     return 0;
 }
