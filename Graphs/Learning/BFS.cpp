@@ -2,6 +2,39 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*
+✅ Algorithm: Breadth-First Search (BFS) Traversal of Graph
+
+Problem:
+- Traverse a graph level by level starting from a given node.
+- Graph is represented as an adjacency list.
+
+Steps:
+1. Initialize:
+   - visited[] = array to mark visited nodes.
+   - queue q1 to store nodes in BFS order.
+   - res[] = result vector storing traversal order.
+2. Push the starting node into queue and mark visited.
+3. While queue is not empty:
+   - Pop front element from queue → element.
+   - Add it to result.
+   - For every neighbor of element:
+       - If not visited:
+           - Push neighbor into queue.
+           - Mark neighbor as visited.
+4. Return res (BFS traversal order).
+
+⚠️ Assumptions:
+- Graph is represented using adjacency list.
+- Works for connected graphs; for disconnected graphs, call BFS for each unvisited node.
+
+🕒 Time Complexity: O(V + E)
+   - Each vertex is visited once, and each edge is considered once.
+
+🧠 Space Complexity: O(V)
+   - visited array + queue storage.
+*/
+
 vector<int> bfs(vector<vector<int>> &adj, int start)
 {
     vector<int> res;
