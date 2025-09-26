@@ -47,11 +47,11 @@ Steps:
    - For visited matrix, ans matrix, and BFS queue.
 */
 
-vector<vector<int>> updateMatrix(vector<vector<int>> &mat)
+vector<vector<int>> updateMatrix(vector<vector<int>> &isWater)
 {
 
-    int n = mat.size();
-    int m = mat[0].size();
+    int n = isWater.size();
+    int m = isWater[0].size();
     vector<vector<int>> visited(n, vector<int>(m, 0));
     vector<vector<int>> ans(n, vector<int>(m, 0));
     queue<pair<int, int>> q1;
@@ -60,7 +60,7 @@ vector<vector<int>> updateMatrix(vector<vector<int>> &mat)
     {
         for (int j = 0; j < m; j++)
         {
-            if (mat[i][j] == 0)
+            if (isWater[i][j] == 0)
             {
                 visited[i][j] = 1;
                 q1.push({i, j});
@@ -77,7 +77,7 @@ vector<vector<int>> updateMatrix(vector<vector<int>> &mat)
         {
             int nrow = row + delrow[k];
             int ncol = col + delcol[k];
-            if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && !visited[nrow][ncol] && mat[nrow][ncol] == 1)
+            if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && !visited[nrow][ncol] && isWater[nrow][ncol] == 1)
             {
                 visited[nrow][ncol] = 1;
                 ans[nrow][ncol] = ans[row][col] + 1;
