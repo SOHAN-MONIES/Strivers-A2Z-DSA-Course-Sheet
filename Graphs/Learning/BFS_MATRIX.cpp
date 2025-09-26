@@ -12,7 +12,7 @@ Steps:
    - visited[] = array to mark visited nodes.
    - queue q1 to store nodes in BFS order.
    - ans[] = result vector storing traversal order.
-2. Push the starting node into queue and mark visited.
+2. Push the starting node into queue and mark visited.j
 3. While queue is not empty:
    - Pop front element from queue → element.
    - Add element to ans.
