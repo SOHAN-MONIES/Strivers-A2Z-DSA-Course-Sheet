@@ -82,24 +82,19 @@ void solve(vector<vector<char>> &board)
 }
 int main()
 {
+
     vector<vector<char>> grid = {
-        {'X', 'X', 'X', 'X', 'X'},
-        {'O', 'X', 'X', 'X', 'O'},
-        {'O', 'X', 'X', 'O', 'X'},
-        {'X', 'X', 'X', 'O', 'O'}};
-    // vector<vector<char>> grid = {
-    //     {'X', 'X', 'O', 'O', 'X', 'X', 'O', 'O', 'O'},
-    //     {'X', 'O', 'X', 'X', 'X', 'O', 'X', 'O', 'O'},
-    //     {'O', 'X', 'X', 'X', 'X', 'X', 'X', 'O', 'X'},
-    //     {'O', 'O', 'O', 'O', 'X', 'X', 'O', 'X', 'O'},
-    //     {'O', 'X', 'O', 'X', 'O', 'O', 'X', 'X', 'X'},
-    //     {'X', 'O', 'O', 'X', 'X', 'O', 'X', 'X', 'O'},
-    //     {'O', 'X', 'X', 'X', 'O', 'X', 'X', 'X', 'X'},
-    //     {'X', 'O', 'O', 'O', 'X', 'O', 'X', 'X', 'O'},
-    //     {'X', 'O', 'O', 'X', 'X', 'O', 'X', 'X', 'X'}};
-    vector<vector<char>> ans = solve(grid);
-    // Example: print the matrix
-    for (auto row : ans)
+        {'X', 'X', 'O', 'O', 'X', 'X', 'O', 'O', 'O'},
+        {'X', 'O', 'X', 'X', 'X', 'O', 'X', 'O', 'O'},
+        {'O', 'X', 'X', 'X', 'X', 'X', 'X', 'O', 'X'},
+        {'O', 'O', 'O', 'O', 'X', 'X', 'O', 'X', 'O'},
+        {'O', 'X', 'O', 'X', 'O', 'O', 'X', 'X', 'X'},
+        {'X', 'O', 'O', 'X', 'X', 'O', 'X', 'X', 'O'},
+        {'O', 'X', 'X', 'X', 'O', 'X', 'X', 'X', 'X'},
+        {'X', 'O', 'O', 'O', 'X', 'O', 'X', 'X', 'O'},
+        {'X', 'O', 'O', 'X', 'X', 'O', 'X', 'X', 'X'}};
+
+    for (auto row : grid)
     {
         for (auto val : row)
         {
@@ -109,10 +104,3 @@ int main()
     }
     return 0;
 }
-/*
-X X X X X
-O X X X O
-O X X O X
-X X X O O
-
-*/
