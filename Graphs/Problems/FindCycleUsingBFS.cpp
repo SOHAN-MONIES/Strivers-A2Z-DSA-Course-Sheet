@@ -2,27 +2,60 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Using two functions as disconnected graphs are available in the question
-// if(parent!=node) then it is cycle
-// if not understood then check using parent child tree and see if node and parent are same then it not type of cycle option , if equal then it is parent
+/*
+✅ Algorithm: Cycle Detection in Undirected Graph (BFS)
 
-bool isDetect(int src, vector<vector<int>> &adj, vector<int> &visited)
+Problem:
+- Given V vertices and an edge list, check if the undirected graph contains a cycle.
+
+Steps:
+1. Build adjacency list from edges.
+   - For each edge (u, v):
+       - Add v to adj[u] and u to adj[v].
+
+2. Initialize a visited array of size V with 0 (unvisited).
+
+3. For every unvisited node, run BFS:
+   - Push {node, parent} into queue (parent = -1 for root).
+   - Mark node as visited.
+
+4. BFS traversal:
+   - Pop {element, parent} from queue.
+   - For every neighbor of element:
+       - If not visited:
+           - Mark visited and push {neighbor, element}.
+       - Else if visited and neighbor != parent:
+           - Cycle found → return true.
+
+5. If BFS finishes for all components without detecting a cycle → return false.
+
+⚠️ Assumptions:
+- Graph is undirected.
+- Input edges are given as pairs (u, v).
+- Graph can be disconnected → hence we loop through all nodes.
+
+🕒 Time Complexity: O(V + E)
+   - Each vertex and edge is processed once.
+
+🧠 Space Complexity: O(V + E)
+   - Adjacency list + visited array + queue.
+*/
+bool bfs(vector<vector<int>> &adj, vector<int> &visited, int start)
 {
-    visited[src] = 1;
-    queue<pair<int, int>> q;
-    q.push({src, -1});
+    queue<pair<int, int>> q1;
+    q1.push({start, -1});
 
-    while (!q.empty())
+    visited[start] = 1;
+    while (!q1.empty())
     {
-        int element = q.front().first;
-        int parent = q.front().second;
-        q.pop();
+        auto [element, parent] = q1.front();
+        q1.pop();
         for (auto node : adj[element])
         {
             if (!visited[node])
             {
                 visited[node] = 1;
-                q.push({node, element});
+                q1.push({node, element});
             }
             else
             {
@@ -38,21 +71,22 @@ bool isDetect(int src, vector<vector<int>> &adj, vector<int> &visited)
 
 bool isCycle(int V, vector<vector<int>> &edges)
 {
-
+    // Code here
     vector<vector<int>> adj(V);
-    for (int i = 0; i < edges.size(); i++)
+    for (auto row : edges)
     {
-        int u = edges[i][0];
-        int v = edges[i][1];
-        adj[u].push_back(v);
-        adj[v].push_back(u);
+        int x = row[0];
+        int y = row[1];
+        adj[x].push_back(y);
+        adj[y].push_back(x);
     }
     vector<int> visited(V, 0);
-    for (int i = 0; i < visited.size(); i++)
+    for (int i = 0; i < V; i++)
     {
+
         if (!visited[i])
         {
-            if (isDetect(i, adj, visited))
+            if (bfs(adj, visited, i))
             {
                 return true;
             }
@@ -61,7 +95,6 @@ bool isCycle(int V, vector<vector<int>> &edges)
 
     return false;
 }
-
 int main()
 {
 
