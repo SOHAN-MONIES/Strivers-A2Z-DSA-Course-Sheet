@@ -97,6 +97,9 @@ bool isCycle(int V, vector<vector<int>> &edges)
 }
 int main()
 {
-
+    vector<vector<int>> edges = {{0, 1},
+                                 {1, 2},
+                                 {0, 2}};
+    cout << isCycle(3, edges);
     return 0;
 }
