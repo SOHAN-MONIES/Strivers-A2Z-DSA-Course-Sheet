@@ -29,7 +29,8 @@ vector<int> topoSort(int V, vector<vector<int>> &edges)
     }
     for (int i = 0; i < V; i++)
     {
-        dfs(i, vis, st, adj);
+        if (!visi2ted[i])
+            dfs(i, vis, st, adj);
     }
     while (!st.empty())
     {

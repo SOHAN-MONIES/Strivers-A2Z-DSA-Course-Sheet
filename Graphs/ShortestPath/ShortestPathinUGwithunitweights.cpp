@@ -4,27 +4,31 @@ using namespace std;
 
 vector<int> shortestPath(vector<vector<int>> &adj, int src)
 {
-    int N = adj.size();
-    vector<int> distance(N, -1);
-    distance[src] = 0;
-    queue<pair<int, int>> q;
-    q.push({src, 0});
-    while (!q.empty())
+    // code here
+    int V = adj.size();
+    vector<int> distance(V, 1e9);
+    queue<pair<int, int>> q1;
+    q1.push({src, 0});
+    while (!q1.empty())
     {
-        int element = q.front().first;
-        int prevDistance = q.front().second;
-        q.pop();
+        auto [element, w] = q1.front();
+        q1.pop();
         for (auto node : adj[element])
         {
-            int newDistance = prevDistance + 1;
-            if (distance[node] == -1 || newDistance < distance[node])
+            if (distance[node] > w + 1)
             {
-                distance[node] = newDistance;
-                q.push({node, distance[node]});
+                distance[node] = distance[w] + 1;
+                q1.push({node, distance[node]});
             }
         }
     }
-
+    for (int i = 0; i < distance.size(); i++)
+    {
+        if (distance[i] == 1e9)
+        {
+            distance[i] = -1;
+        }
+    }
     return distance;
 }
 
