@@ -1,6 +1,7 @@
-// URL:https://leetcode.com/problems/number-of-operations-to-make-network-connected/
+// URL:
 #include <bits/stdc++.h>
 using namespace std;
+// User function Template for C++
 
 class DisjointSet
 {
@@ -9,8 +10,8 @@ class DisjointSet
 public:
     DisjointSet(int n)
     {
-        rank.resize(n, 0);
-        parent.resize(n);
+        rank.resize(n + 1, 0);
+        parent.resize(n + 1);
         for (int i = 0; i < n; i++)
         {
             parent[i] = i;
@@ -29,9 +30,7 @@ public:
         int ulp_u = findUParent(u);
         int ulp_v = findUParent(v);
         if (ulp_u == ulp_v)
-        {
             return;
-        }
         if (rank[ulp_u] < rank[ulp_v])
         {
             parent[ulp_u] = ulp_v;
@@ -43,7 +42,7 @@ public:
         else
         {
             parent[ulp_v] = ulp_u;
-            rank[ulp_v]++;
+            rank[ulp_u]++;
         }
     }
 };
@@ -51,35 +50,35 @@ public:
 class Solution
 {
 public:
-    int makeConnected(int n, vector<vector<int>> &connections)
+    int kruskalsMST(int V, vector<vector<int>> &edges)
     {
-        DisjointSet ds(n);
-        int extra = 0;
-        for (auto edge : connections)
+        // code here
+        vector<tuple<int, int, int>> redges;
+        for (auto edge : edges)
         {
             int u = edge[0];
             int v = edge[1];
+            int wt = edge[2];
+            redges.push_back({wt, u, v});
+        }
+        DisjointSet ds(V);
+        sort(redges.begin(), redges.end());
+        int mstWt = 0;
+        for (auto it : redges)
+        {
+            auto [wt, u, v] = it;
             if (ds.findUParent(u) != ds.findUParent(v))
             {
+                mstWt += wt;
                 ds.unionByRank(u, v);
             }
-            else
-            {
-                extra++;
-            }
         }
-        int components = 0;
-        for (int i = 0; i < n; i++)
-        {
-            if (ds.findUParent(i) == i)
-            {
-                components++;
-            }
-        }
-        if (extra >= components - 1)
-        {
-            return components - 1;
-        }
-        return -1;
+        return mstWt;
     }
 };
+
+int main()
+{
+
+    return 0;
+}
