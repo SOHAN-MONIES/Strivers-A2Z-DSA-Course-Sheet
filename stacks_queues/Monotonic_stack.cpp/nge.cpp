@@ -1,6 +1,49 @@
 // URL:
 #include <bits/stdc++.h>
 using namespace std;
+/*
+✅ Algorithm: Next Greater Element (Right Side)
+
+Problem:
+For each element in the array, find the next element to the RIGHT
+that is strictly greater.
+If no such element exists → return -1 for that index.
+
+Example:
+arr = [4, 5, 2, 25]
+NGE = [5, 25, 25, -1]
+
+-------------------------------------------------
+1️⃣ Monotonic Stack Approach (Traverse from Right → Left)
+
+Why from right to left?
+- Because NGE is searched on the right side.
+- A decreasing stack efficiently stores candidates for NGE.
+
+Steps:
+1. Create an empty stack.
+2. Traverse array from rightmost index down to 0:
+   - While stack is not empty AND stack.top() <= arr[i]:
+         pop the stack (useless elements)
+   - If stack becomes empty → NGE[i] = -1
+     Else → NGE[i] = stack.top()
+   - Push arr[i] onto the stack (it may be NGE for someone to the left)
+
+-------------------------------------------------
+Time Complexity: O(n)
+- Each element is pushed and popped at most once.
+
+Space Complexity: O(n)
+- Stack + output array.
+
+-------------------------------------------------
+Intuition:
+Maintain a stack of "useful" greater elements.
+For each element, remove all smaller elements to its right,
+so only the next greater candidate remains on top.
+-------------------------------------------------
+*/
+
 // Bruteforce
 //  vector<int> nextLargerElement(vector<int> &arr)
 //  {
