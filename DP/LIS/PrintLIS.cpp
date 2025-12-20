@@ -92,16 +92,15 @@ vector<int> getLIS(vector<int> &arr)
         }
     }
 
-    int i = max_element(dp.begin(), dp.end()) - dp.begin();
+    int idx = max_element(dp.begin(), dp.end()) - dp.begin();
     vector<int> ans;
-    ans.push_back(arr[i]);
-    int next = hash[i];
-    while (next != i)
+
+    while (hash[idx] != idx)
     {
-        ans.push_back(arr[next]);
-        i = next;
-        next = hash[i];
+        ans.push_back(arr[idx]);
+        idx = hash[idx];
     }
+    ans.push_back(arr[idx]);
     return ans;
 }
 int main()
