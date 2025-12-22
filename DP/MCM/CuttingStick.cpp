@@ -33,7 +33,7 @@ int minCost(int n, vector<int> &cuts)
     return f(0, m - 1, cuts, dp);
 }
 
-int minCost(int n, vector<int> &cuts)
+int minCost_TAB(int n, vector<int> &cuts)
 {
     cuts.push_back(0);
     cuts.push_back(n);
